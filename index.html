@@ -25,7 +25,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mysave | Cloud gallery for longterm storage</title>
+    <title>Mysave | Cloud gallery for long-term storage</title>
     <meta name="description" content="Mysave is a cloud gallery with lifetime storage. One place for all your ageless photos permanently saved.">
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/style.css">
@@ -53,7 +53,7 @@
                 <div class="container">
                     <div class="hero-inner">
 						<div class="hero-copy">
-	                        <h1 class="hero-title mt-0">Cloud gallery for longterm storage</h1>
+	                        <h1 class="hero-title mt-0">Cloud gallery for long-term storage</h1>
 	                        <p class="hero-paragraph">Store your forever data in one place</p>
                             <!-- <h1 class="hero-title mt-0">Launch offer</h1> -->
                             <h3 class="feature-title mt-0">Free for 6 months of use</h3>
@@ -142,10 +142,23 @@
                     <div class="cta-inner section-inner">
                         <div class="cta-header text-center">
                             <h2 class="section-title mt-0">Pricing</h2>
-                            <p class="section-paragraph">₹1 per photo <br> $1 per GB</p>
+                            <div class="pricing-container">
+                                <div class="currency-toggle" style="margin-bottom: 20px;">
+                                    <button id="inr-btn" class="currency-btn active" onclick="switchCurrency('inr')">INR</button>
+                                    <button id="usd-btn" class="currency-btn" onclick="switchCurrency('usd')">USD</button>
+                                </div>
+                                <p class="section-paragraph">
+                                    <span id="pricing-inr">₹1 per photo <br> ₹100 per GB</span>
+                                    <span id="pricing-usd" style="display: none;">$0.01 per photo <br> $1 per GB</span>
+                                </p>
+                            </div>
 
-                            <h2 class="section-title mt-0">Usage</h2>
-                            <p class="section-paragraph">An average event has 0.1GB to 1GB of content. Considering 5 people are sharing it, each of them will pay $0.02 to $0.2 for lifetime storage.</p>
+                            <h2 class="section-title mt-0">Usage Example</h2>
+                            <p class="section-paragraph">
+                                An average event has 0.1GB to 1GB of content. Considering 5 people are sharing it, each person will pay:
+                                <br><span id="usage-inr">₹2 to ₹20 for lifetime storage</span>
+                                <span id="usage-usd" style="display: none;">$0.02 to $0.2 for lifetime storage</span>
+                            </p>
 							<div class="cta-cta">
 								<a class="button button-primary" href="https://web.mysave.app">try now</a>
 							</div>
@@ -171,12 +184,15 @@
                         <li>
                             <a href="https://wa.me/917896258858">+91 (789) 625 8858</a>
                         </li>
-                        <!-- <li>
-                            <a href="#">FAQ's</a>
+                        <li>
+                            <a href="privacy-policy.html">Privacy Policy</a>
                         </li>
                         <li>
-                            <a href="#">Support</a>
-                        </li> -->
+                            <a href="terms-conditions.html">Terms & Conditions</a>
+                        </li>
+                        <li>
+                            <a href="refund-policy.html">Refund Policy</a>
+                        </li>
                     </ul>
                     <ul class="footer-social-links list-reset">
                         <li>
@@ -212,5 +228,80 @@
     </div>
 
     <script src="dist/js/main.min.js"></script>
+    <script>
+        function switchCurrency(currency) {
+            const inrBtn = document.getElementById('inr-btn');
+            const usdBtn = document.getElementById('usd-btn');
+            const pricingINR = document.getElementById('pricing-inr');
+            const pricingUSD = document.getElementById('pricing-usd');
+            const usageINR = document.getElementById('usage-inr');
+            const usageUSD = document.getElementById('usage-usd');
+            
+            if (currency === 'inr') {
+                inrBtn.classList.add('active');
+                usdBtn.classList.remove('active');
+                pricingINR.style.display = 'inline';
+                pricingUSD.style.display = 'none';
+                usageINR.style.display = 'inline';
+                usageUSD.style.display = 'none';
+            } else {
+                usdBtn.classList.add('active');
+                inrBtn.classList.remove('active');
+                pricingINR.style.display = 'none';
+                pricingUSD.style.display = 'inline';
+                usageINR.style.display = 'none';
+                usageUSD.style.display = 'inline';
+            }
+        }
+    </script>
+    <style>
+        .pricing-container {
+            margin: 20px 0;
+        }
+        
+        .currency-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .currency-btn {
+            padding: 8px 16px;
+            border: 2px solid #007bff;
+            background: transparent;
+            color: #007bff;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .currency-btn.active,
+        .currency-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+        
+        .policy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .policy-container h1 {
+            margin-bottom: 30px;
+        }
+        
+        .policy-container h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .policy-container p {
+            margin-bottom: 15px;
+        }
+    </style>
 </body>
 </html>
